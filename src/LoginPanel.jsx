@@ -35,7 +35,17 @@ const Input = styled.input`
 `
 
 const LoginPanel = () => {
-    const [ EmailValue, setEmailValue ] = useState('')
+    
+    const [ email, setEmailValue ] = useState("")
+    const [ password, setPasswordValue ] = useState("")
+
+    const handleLogin = () => {
+        if(email === "email" && password === "password") {
+            return alert("Log in sucess")
+        } else {
+            return alert("Invalid Username and password")
+        }
+    }
  return (
     <LoginForm>
         <>
@@ -43,15 +53,20 @@ const LoginPanel = () => {
         <Input 
          type="text"
          placeholder="Email Address"
+         value={email}
+         onChange={(e)=> setEmailValue(e.target.value)}
         />
         <Input 
          type="text"
          placeholder="Password"
+         value={password}
+         onChange={e => setPasswordValue(e.target.value)}
         />
         <Input 
          className="submit-button" 
          type ="submit" 
          value="Log in"
+         onClick={handleLogin}
          />
         </>
     </LoginForm>
